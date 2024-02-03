@@ -6,9 +6,6 @@ class Client:
         self.model = ModelManager().get_model()
         (self.x_train, self.y_train), (self.x_test, self.y_test) = DataManager().get_data()
 
-    def get_model(self):
-        return self.model
-
     def get_model_parameters(self):
         return self.model.get_weights()
 
