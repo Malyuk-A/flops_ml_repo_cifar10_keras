@@ -12,9 +12,7 @@ class ModelManager:
         )
         self.loss_function = "sparse_categorical_crossentropy"
         self.optimizer = "adam"
-        self.model_core.compile(
-            self.optimizer, self.loss_function, metrics=["accuracy"]
-        )
+        self.model.compile(self.optimizer, self.loss_function, metrics=["accuracy"])
 
         # Only for developing/testing
         self.x_train = None
