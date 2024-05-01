@@ -12,11 +12,24 @@ class ModelManager:
         )
         self.loss_function = "sparse_categorical_crossentropy"
         self.optimizer = "adam"
-        self.model.compile(self.optimizer, self.loss_function, metrics=["accuracy"])
+        self.model_core.compile(
+            self.optimizer, self.loss_function, metrics=["accuracy"]
+        )
 
+        # Only for developing/testing
+        self.x_train = None
+        self.y_train = None
+        self.x_test = None
+        self.y_test = None
+
+    # Only for developing/testing
+    def prepare_data(self) -> None:
         (self.x_train, self.y_train), (self.x_test, self.y_test) = (
             DataManager().get_data()
         )
+
+    def get_model(self) -> Any:
+        return self.model
 
     def get_model_parameters(self) -> Any:
         return self.model.get_weights()
@@ -24,9 +37,10 @@ class ModelManager:
     def set_model_parameters(self, parameters) -> None:
         self.model.set_weights(parameters)
 
-    def fit_model(self) -> None:
+    def fit_model(self) -> int:
         self.model.fit(self.x_train, self.y_train, epochs=1, batch_size=32)
+        return len(self.x_train)
 
-    def evaluate_model(self) -> Tuple[Any, Any]:
+    def evaluate_model(self) -> Tuple[Any, Any, int]:
         loss, accuracy = self.model.evaluate(self.x_test, self.y_test)
-        return loss, accuracy
+        return loss, accuracy, len(self.x_test)
