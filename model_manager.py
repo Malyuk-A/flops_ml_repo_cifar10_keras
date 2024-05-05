@@ -2,10 +2,10 @@ from typing import Any, Tuple
 
 import tensorflow as tf
 from data_manager import DataManager
-from flops_utils.ml_repo_templates import DataManagerTemplate
+from flops_utils.ml_repo_templates import ModelManagerTemplate
 
 
-class ModelManager(DataManagerTemplate):
+class ModelManager(ModelManagerTemplate):
     def __init__(self):
         self.model = tf.keras.applications.MobileNetV2(
             (32, 32, 3), classes=10, weights=None
