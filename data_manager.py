@@ -1,9 +1,10 @@
 from typing import Any, Tuple
 
 import tensorflow as tf
+from flops_utils.ml_repo_templates import ModelManagerTemplate
 
 
-class DataManager:
+class DataManager(ModelManagerTemplate):
     def __init__(self):
         self.training_data, self.testing_data = tf.keras.datasets.cifar10.load_data()
 

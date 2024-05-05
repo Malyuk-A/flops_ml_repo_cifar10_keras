@@ -1,11 +1,11 @@
 from typing import Any, Tuple
 
 import tensorflow as tf
-
 from data_manager import DataManager
+from flops_utils.ml_repo_templates import DataManagerTemplate
 
 
-class ModelManager:
+class ModelManager(DataManagerTemplate):
     def __init__(self):
         self.model = tf.keras.applications.MobileNetV2(
             (32, 32, 3), classes=10, weights=None
@@ -20,7 +20,6 @@ class ModelManager:
         self.x_test = None
         self.y_test = None
 
-    # Only for developing/testing
     def prepare_data(self) -> None:
         (self.x_train, self.y_train), (self.x_test, self.y_test) = (
             DataManager().get_data()
