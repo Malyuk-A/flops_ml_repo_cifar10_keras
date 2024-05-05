@@ -14,11 +14,10 @@ class ModelManager(ModelManagerTemplate):
         self.optimizer = "adam"
         self.model.compile(self.optimizer, self.loss_function, metrics=["accuracy"])
 
-        # Only for developing/testing
-        self.x_train = None
-        self.y_train = None
-        self.x_test = None
-        self.y_test = None
+        # self.x_train = None
+        # self.y_train = None
+        # self.x_test = None
+        # self.y_test = None
 
     def prepare_data(self) -> None:
         (self.x_train, self.y_train), (self.x_test, self.y_test) = (
