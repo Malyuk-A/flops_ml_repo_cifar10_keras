@@ -1,8 +1,9 @@
 from typing import Any, Tuple
 
 import tensorflow as tf
-from data_manager import DataManager
 from flops_utils.ml_repo_templates import ModelManagerTemplate
+
+from flops_ml_repo_cifar10_keras.data_manager import DataManager
 
 
 class ModelManager(ModelManagerTemplate):
